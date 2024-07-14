@@ -39,7 +39,7 @@ Performance metrics evaluated include:
 ### Results
 Results of performance tests for each method are summarized and visualized using charts and graphs.
 
-![Performance Comparison Chart](performance_comparison.png)
+![Performance Comparison Chart](performance_comparison)
 
 ## Analysis and Discussion
 Analysis of results, including:
