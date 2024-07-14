@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import datetime
 import time
 
-# Function to get CPU utilization
+# Function to get CPU utilization during Multi-Threaded extraction
 def get_cpu_utilization():
     return psutil.cpu_percent(interval=1, percpu=True)
 
