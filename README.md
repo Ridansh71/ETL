@@ -43,7 +43,7 @@ Results of performance tests for each method are summarized and visualized using
 
 ## Analysis and Discussion
 Analysis of results, including:
-Multi-threading:
+### Multi-threading:
 
 Pros:
 Utilizes multiple CPU cores concurrently, potentially speeding up data processing by distributing the workload.
@@ -51,7 +51,7 @@ Cons:
 Overhead from managing multiple threads can lead to inefficiencies, especially if the task itself is not CPU-bound.
 In the case of ETL processes, where IO operations (e.g., reading from a disk) are significant, multi-threading might not provide a substantial performance boost. In fact, the overhead can sometimes outweigh the benefits.
 
-Row-by-Row Extraction:
+### Row-by-Row Extraction:
 
 Pros:
 Simplicity: This method involves straightforward implementation without the complexities of managing multiple threads.
@@ -59,7 +59,7 @@ Lower overhead: Without the need to manage threads, the system can focus more on
 Cons:
 Can be slower for large datasets if not optimized, as each row is processed individually.
 
-Chunk (Batch) Extraction:
+### Chunk (Batch) Extraction:
 
 Pros:
 Balance between efficiency and resource usage: By processing data in chunks, the method can achieve better cache utilization and reduce the frequency of IO operations.
@@ -67,8 +67,8 @@ Potentially lower memory usage compared to processing the entire dataset at once
 Cons:
 May require tuning to find the optimal chunk size for a specific dataset and system configuration.
 
-Considerations in Choosing the Optimal Extraction Method
-Dataset Size:
+## Considerations in Choosing the Optimal Extraction Method
+### Dataset Size:
 
 Small Datasets:
 For small datasets, the overhead of multi-threading may outweigh its benefits. Row-by-row or small chunk extraction methods can be more efficient due to lower overhead.
@@ -76,13 +76,15 @@ Large Datasets:
 For large datasets, chunk-based extraction often provides the best balance. It reduces the IO operation frequency and improves cache utilization without the significant overhead of managing many threads.
 System Resources:
 
-CPU Cores:
+### CPU Cores:
+
 Systems with many CPU cores may benefit more from multi-threading, but only if the task is CPU-bound and the overhead of threading is minimal.
 Memory:
 Systems with limited memory should prefer chunk-based extraction to avoid memory exhaustion. Processing data in smaller chunks helps in managing memory usage efficiently.
 IO Performance:
 Systems with fast IO subsystems (e.g., SSDs) might benefit less from chunking, as the IO operations are less of a bottleneck. However, chunking can still help with memory and cache management.
-Task Nature:
+
+### Task Nature:
 
 CPU-bound tasks: Multi-threading might provide benefits if the task heavily utilizes CPU and can be parallelized effectively.
 IO-bound tasks: Methods that reduce IO operation frequency, such as chunk-based extraction, can be more efficient.
